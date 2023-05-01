@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>美化過的時鐘</title>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        background-color: #333;
+        color: #fff;
+      }
+
+      #clock {
+        font-size: 6em;
+        margin-top: 20%;
+      }
+
+      #date {
+        font-size: 2em;
+        margin-top: 5%;
+      }
+
+      #time {
+        font-size: 2em;
+        margin-top: 2%;
+      }
+
+      #timezone {
+        font-size: 1.5em;
+        margin-top: 2%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock">
+      <span id="hours"></span>
+      <span>:</span>
+      <span id="minutes"></span>
+      <span>:</span>
+      <span id="seconds"></span>
+    </div>
+    <div id="date"></div>
+    <div id="time"></div>
+    <div id="timezone"></div>
+
+    <script>
+      function updateTime() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const date = now.toLocaleDateString();
+
+        document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        document.getElementById('timezone').innerText = timezone;
+        document.getElementById('date').innerText = date;
+      }
+
+      updateTime();
+      setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>
