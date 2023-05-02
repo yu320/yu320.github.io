@@ -1,93 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Clock</title>
-	<style type="text/css">
-		body{
-			background-color: #1F1F1F;
-		}
-		h1{
-			color: #fff;
-			text-align: center;
-			margin-top: 80px;
-			font-size: 50px;
-			font-family: Arial, sans-serif;
-		}
-		.analogClock {
-			margin: 0 auto;
-			position: relative;
-			width: 300px;
-			height: 300px;
-			background: url(clock_bg.png) no-repeat;
-			background-size: 100% 100%;
-		}
-		.hourHand {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -100%);
-			width: 10px;
-			height: 70px;
-			background-color: #000;
-			border-top-left-radius: 5px;
-			border-top-right-radius: 5px;
-		}
-		.minuteHand {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -100%);
-			width: 6px;
-			height: 100px;
-			background-color: #000;
-			border-top-left-radius: 3px;
-			border-top-right-radius: 3px;
-		}
-		.secondHand {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -100%);
-			width: 2px;
-			height: 120px;
-			background-color: #f00;
-		}
-		.digitalClock {
-			margin: 0 auto;
-			width: 150px;
-			font-size: 32px;
-			font-family: Arial, sans-serif;
-			color: #fff;
-			text-align: center;
-			margin-top: 80px;
-		}
-	</style>
+    <meta charset="utf-8">
+    <title>時鐘</title>
+    <style type="text/css">
+        body {
+            background-color: #222;
+        }
+
+        #clock {
+            width: 400px;
+            height: 400px;
+            margin: 50px auto;
+            position: relative;
+            border-radius: 50%;
+            background-color: #f7f7f7;
+        }
+
+        #hour,
+        #minute,
+        #second {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+        }
+
+        #hour {
+            background-color: #222;
+            transform-origin: bottom center;
+        }
+
+        #minute {
+            background-color: #444;
+            transform-origin: bottom center;
+        }
+
+        #second {
+            background-color: #777;
+            transform-origin: bottom center;
+        }
+
+        #digital {
+            position: absolute;
+            top: 200px;
+            left: 120px;
+            font-size: 60px;
+            font-family: Arial;
+            color: #fff;
+            text-shadow: 0px 0px 10px rgba(255,255,255,0.7);
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body>
-	<h1>Time</h1>
-	<div class="analogClock">
-		<div class="hourHand"></div>
-		<div class="minuteHand"></div>
-		<div class="secondHand"></div>
-	</div>
-	<div class="digitalClock"></div>
-	<div>
-		<label><input type="radio" name="clockStyle" value="analog" checked>指针式</label>
-		<label><input type="radio" name="clockStyle" value="digital">电子式</label>
-	</div>
-	<script type="text/javascript">
-		function analogClock() {
-			var date = new Date();
-			var hours = date.getHours();
-			var minutes = date.getMinutes();
-			var seconds = date.getSeconds();
+    <div id="clock">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+        <div id="digital">00:00:00</div>
+    </div>
+    <div>
+        <input type="radio" name="clockType" value="pointer" checked>指針式<br>
+        <input type="radio" name="clockType" value="digital">電子式
+    </div>
 
-			var hourDeg = (hours * 30) + (minutes / 2);
-			var minuteDeg = (minutes * 6);
-			var secondDeg = (seconds * 6);
+    <script type="text/javascript">
+        function updateClock(clockType) {
+            var now = new Date();
+            var h = now.getHours();
+            var m = now.getMinutes();
+            var s = now.getSeconds();
+            var hour = document.getElementById('hour');
+            var minute = document.getElementById('minute');
+            var second = document.getElementById('second');
+            var digital = document.getElementById('digital');
 
-			document.querySelector(".hourHand").style.transform = "rotate(" + hourDeg + "deg)";
-			document.querySelector(".minuteHand").style.transform = "rotate(" + minuteDeg + "deg)";
-			document.querySelector(".secondHand").style.transform = "rotate(" + secondDeg + "deg)";
-		
+            if (clockType === 'pointer') {
+                digital.style.visibility = 'hidden';
+
+                var hDeg = (h * 30) + (m / 2);
+                var mDeg = (m * 6);
+                var sDeg = (s * 6);
+
+                hour.style.transform = 'rotate(' + hDeg + 'deg)';
+                minute.style.transform = 'rotate(' + mDeg + 'deg)';
+                second.style.transform = 'rotate(' + sDeg + 'deg)';
+            } else if (clockType === 'digital') {
+                digital.style.visibility = 'visible';
+                digital.innerHTML = h + ':' + m + ':' + s;
+            }
+        }
+
+        updateClock('pointer'); // 預設為指針式
+
+        // 監聽時鐘類型的變更
+        var clockRadios = document.getElementsByName('clockType');
+        for (var i = 0; i < clockRadios.length; i++) {
+            clockRadios[i].addEventListener('change', function() {
+                updateClock(this
