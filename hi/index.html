@@ -209,9 +209,9 @@
         var data = {
           'entry.219362454': name,
           'entry.1175993827': schoolin,
-          'entry.29419290': schoolmajoring,
-          'entry.1554095337': textarea
-          'entry.1208194728' : msg
+          'entry.294192904': schoolmajoring,
+          'entry.1554095337': textarea,
+          'entry.1208194728': msg
         };
         $.ajax({
           type: 'POST',
@@ -220,7 +220,7 @@
           contentType: 'application/json',
           dataType: 'jsonp',
           complete: function() {
-            alert('資料已送出！');
+            alert('資料已送出，若有問題將會連絡！');
           }
         });
         
