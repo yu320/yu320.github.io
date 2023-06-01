@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>完全客製google表單，美化表單樣式 - August - Let's Write</title>
+  <title>大學入取統計</title>
   <link rel="canonical" href="https://www.letswrite.tw/custom-google-form/">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
@@ -35,7 +35,7 @@
       height: 100%;
     }
     .bg {
-      background: url('https://fakeimg.pl/1920x1024/?text=KV') center center;
+      background: url('PHOUYOYOTO') center center;
       background-size: cover;
     }
     .form {
@@ -88,16 +88,8 @@
 
   <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
 
-  <!-- Google Tag Manager-->
-  <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PGQ9WQT');
-  </script>
-
 </head>
+
 <body>
 
   <!-- Google Tag Manager (noscript)-->
@@ -112,53 +104,77 @@
       
       <!-- form -->
       <section class="six columns half form">
-        <h1>Contact us</h1>
+        <h1>統計表單</h1>
         <form>
           <!-- 姓名 -->
           <div class="input-group">
             <label for="demo_name">姓名</label>
-            <input class="u-full-width" type="text" placeholder="test@mailbox.com" id="demo_name">
-          </div>
-
-          <!-- 性別 -->
-          <div class="input-group">
-            <label>姓別</label>
-            <div class="radio-group row">
-              <!-- 男性 -->
-              <div class="four columns">
-                <input type="radio" id="male" name="demo_radio" value="male" checked>
-                <label for="male">男性</label>
-              </div>
-
-              <!-- 女性 -->
-              <div class="four columns">
-                <input type="radio" id="female" name="demo_radio" value="female">
-                <label for="female">女性</label>
-              </div>
-
-              <!-- 法人 -->
-              <div class="four columns">
-                <input type="radio" id="legal" name="demo_radio" value="legal">
-                <label for="legal">法人</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- 詢問類別 -->
-          <div class="input-group">
-            <label for="demo_select">詢問類別</label>
-            <select class="u-full-width" id="demo_select">
+            <select class="u-full-width" id="demo_name">
               <option value="0" value="0" selected disabled>請選擇</option>
-              <option value="cat">貓類</option>
-              <option value="dog">狗類</option>
-              <option value="bear">熊類</option>
+              <option value="夏巧庭">夏巧庭</option>
+              <option value="莊智安">莊智安</option>
+              <option value="黃韻真">黃韻真</option>
+              <option value="鄭雅云">鄭雅云</option>
+              <option value="王苙臣">王苙臣</option>
+              <option value="何奇恩">何奇恩</option>
+              <option value="何晨塏">何晨塏</option>
+              <option value="李昌叡">李昌叡</option>
+              <option value="李瑞諦">李瑞諦</option>
+              <option value="周恩定">周恩定</option>
+              <option value="林立愷">林立愷</option>
+              <option value="林玟諺">林玟諺</option>
+              <option value="柯名軒">柯名軒</option>
+              <option value="柯昱安">柯昱安</option>
+              <option value="范振楷">范振楷</option>
+              <option value="張育瑋">張育瑋</option>
+              <option value="張翔巽">張翔巽</option>
+              <option value="許惟翔">許惟翔</option>
+              <option value="陳世康">陳世康</option>
+              <option value="陳東寅">陳東寅</option>
+              <option value="陳宥宏">陳宥宏</option>
+              <option value="陳建宇">陳建宇</option>
+              <option value="陳柏翰">陳柏翰</option>
+              <option value="游舜承">游舜承</option>
+              <option value="黃振軒">黃振軒</option>
+              <option value="楊宸睿">楊宸睿</option>
+              <option value="葉博威">葉博威</option>
+              <option value="廖健銘">廖健銘</option>
+              <option value="甄宸偉">甄宸偉</option>
+              <option value="劉柏宏">劉柏宏</option>
+              <option value="蔡明龍">蔡明龍</option>
+              
             </select>
           </div>
 
-          <!-- 詢問內容 -->
+          <!-- 錄取學校 -->
           <div class="input-group">
-            <label for="demo_textarea">詢問內容</label>
-            <textarea class="u-full-width" id="demo_textarea"></textarea>
+            <label for="demo_schoolin">錄取學校</label>
+            <input class="u-full-width" type="text" placeholder="XX科技大學" id="demo_schoolin">
+          </div>
+          
+          <!-- 錄取科系 -->
+          <div class="input-group">
+            <label for="demo_schoolmajoring">錄取科系</label>
+            <input class="u-full-width" type="text" placeholder="XX系" id="demo_schoolmajoring">
+          </div>
+          
+          <!-- 錄取管道 -->
+          <div class="input-group">
+            <label for="demo_textarea">錄取管道</label>
+            <select class="u-full-width" id="demo_textarea">
+              <option value="0" value="0" selected disabled>請選擇</option>
+              <option value="技優甄審">技優甄審</option>
+              <option value="甄選入學">甄選入學</option>
+              <option value="登記分發">登記分發</option>
+              <option value="其他(請在留言板填寫)">其他(請在留言板填寫)</option>              
+            </select>
+          </div>          
+         
+        
+          <!-- 留言板 -->
+          <div class="input-group">
+            <label for="demo_msg">有沒有什麼話想要說阿</label>
+            <textarea class="u-full-width" id="demo_msg"></textarea>
           </div>
 
           <button type="button" id="submit" class="button-primary u-full-width">確認送出</button>
@@ -175,32 +191,31 @@
         
         // 姓名
         var name = $('#demo_name').val() || '未填寫';
+        
+        // 錄取學校
+        var  schoolin = $('#demo_schoolin').val() || '未填寫';
 
-        // 性別
-        var sex = function() {
-          var v;
-          $('[name="demo_radio"]').each(function() {
-            if($(this).prop('checked') === true) v = $(this).val();
-          });
-          return v;
-        };
+        // 錄取科系
+        var schoolmajoring = $('#demo_schoolmajoringl').val() || '未填寫';
+        
+        // 入取管道
+        var textarea = $('#demo_textarea').val() || '未填寫';
+        
+        // 留言板
+        var msg = $('#demo_msg').val() || '未填寫';        
 
-        // 類別
-        var cat = $('#demo_select').val() || '未填寫';
-
-        // 內容
-        var msg = $('#demo_textarea').val() || '未填寫';
 
         // post
         var data = {
-          'entry.248434920': name,
-          'entry.1569038925': sex(),
-          'entry.1509045370': cat,
-          'entry.758411200': msg
+          'entry.219362454': name,
+          'entry.1175993827': schoolin,
+          'entry.29419290': schoolmajoring,
+          'entry.1554095337': textarea
+          'entry.1208194728' : msg
         };
         $.ajax({
           type: 'POST',
-          url: 'https://docs.google.com/forms/d/e/1FAIpQLSeTgHEpVpuV_OHakO-25X-O7I4T1tIzIAUqHWLRvUqG9e6TvQ/formResponse',
+          url: 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdHpHF_mAywp1VJLuEUkvu2HAsjH3f4pmC9fe-35TBUG7Eg7g/formResponse',
           data: data,
           contentType: 'application/json',
           dataType: 'jsonp',
