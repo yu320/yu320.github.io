@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>大學入取統計</title>
+    <link rel="canonical" href="https://letswritetw.github.io/letswrite-google-forms-id-data/"/>
+    <meta property="og:url" content="https://letswritetw.github.io/letswrite-google-forms-id-data/"/>
+    <meta property="fb:app_id" content="2435108729902508"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Let's Write"/>
+    <meta property="og:title" content="Google表單，輸入ID後自動帶入其它欄位資料 - August - Let's Write"/>
+    <meta itemprop="name" content="Google表單，輸入ID後自動帶入其它欄位資料 - August - Let's Write"/>
+    <meta name="description" content="文章大綱"/>
+    <meta property="og:description" content="文章大綱"/>
+    <meta itemprop="description" content="文章大綱"/>
+    <meta itemprop="image" content="https://letswritetw.github.io/letswrite-google-forms-id-data/fb.jpg"/>
+    <meta property="og:image" content="https://letswritetw.github.io/letswrite-google-forms-id-data/fb.jpg"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="Google表單，輸入ID後自動帶入其它欄位資料"/>
+    <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+    <link rel="stylesheet" href="dist/style.min.css"/>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <div class="container" id="app">
+      <div class="double-wrap" :class="{ hide: !loading }">
+        <div class="double">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </div>
+      <section class="kv w-640"><img src="https://picsum.photos/640/360" width="640" height="360" alt="主視覺"/></section>
+      <section class="form w-640">
+        <div class="text-center">
+          <h1>輸入ID後開始填寫</h1>
+          <p>參考資料:<a href="https://letswrite.tw/" target="_blank">Let's Write</a></p>
+          <p>這份表單是用來統計的各位大學上了哪一間學校的，<br>本份資料將用來統計傳給學校，除此之外不會傳，請放心並且如實填寫</p>
+        </div>
+        <div class="form-group">
+          <label for="main_id">請輸入 ID (請查看學校信箱，輸入後沒有顯示資料則代表輸入錯誤)</label>
+          <input class="form-control" id="main_id" type="number" v-model="id" @input="limitIdLen(id)"/>
+        </div>
+        <div class="two-col">
+          <div class="col">
+            <div class="form-group">
+              <label for="name">姓名</label>
+              
+              <div class="prepend">
+                <div class="pre male" v-if="person.gender == '男'">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path fill="#00A7E5" d="M18.586 5H14V3h8v8h-2V6.414l-3.537 3.537a7.5 7.5 0 1 1-1.414-1.414L18.586 5z"></path>
+                  </svg>
+                </div>
+                <div class="pre female" v-if="person.gender == '女'">
+                  <female></female>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path fill="#E91E63" d="M11 15.934A7.501 7.501 0 0 1 12 1a7.5 7.5 0 0 1 1 14.934V18h5v2h-5v4h-2v-4H6v-2h5v-2.066z"></path>
+                  </svg>
+                </div>
+                <input class="form-control" id="name" type="text" v-model="person.name" disabled="disabled"/>
+              </div>
+            </div>
+         
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="site">座號</label>
+              <input class="form-control" id="site" type="text" v-model="person.site" disabled="disabled"/>
+            </div>
+          </div>
+        
+        </div>
+        <div class="form-group">
+          <label for="schoolsite">學號</label>
+          <input class="form-control" id="schoolsite" type="text" v-model="person.schoolsite" disabled="disabled"/>
+       
+          <!-- 錄取學校 -->          
+        </div>
+        <div class="form-group">
+          <label for="schoolin">錄取學校</label>
+          <input class="form-control" id="schoolin" type="text" placeholder="XX科技大學 or OO科大" v-model="person.schoolin" :disabled="person.name == undefined"/>
+       
+          <!-- 錄取科系 -->          
+        </div>
+        <div class="form-group">
+          <label for="schoolmajoring">錄取科系</label>
+          <input class="form-control" id="schoolmajoring" type="text" placeholder="XX系" v-model="person.schoolmajoring" :disabled="person.name == undefined"/>
+        
+
+         <!-- 錄取管道 -->
+        </div>
+        <div class="form-group">
+          <label for="howin">錄取管道</label>
+          <select class="form-control" id="howin" v-model="person.howin" :disabled="person.name == undefined">
+          <option value="0" value="0"  selected disabled>請選擇</option>
+          <option value="技優甄審">技優甄審</option>
+          <option value="甄選入學">甄選入學</option>
+          <option value="登記分發">登記分發</option>
+          <option value="其他(請在留言板填寫)">其他(請在留言板填寫)</option> 
+        </select>
+
+          <!-- 留言板 -->
+        </div>
+        <div class="form-group">
+          <label for="message">留言板</label>
+          <input class="form-control" id="message" type="text"  placeholder="有沒有什麼話要說留阿" v-model="person.message" :disabled="person.name == undefined"/>
+       </div>
+      
+          <div class="submit"><a href="#" :class="{ disabled: person.name == undefined }" @click.prevent="submit">送出</a></div>
+      </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="dist/main.min.js"></script>
+  </body>
+</html>
